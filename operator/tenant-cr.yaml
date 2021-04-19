@@ -1,0 +1,24 @@
+apiVersion: hcp.hpe.com/v1
+kind: Tenant
+metadata:
+  name: data-team
+spec:
+  clustername: mapr-datafabric-cluster
+  clustertype: external
+  baseimagetag: "202010301117C"
+  imageregistry: gcr.io/mapr-252711
+  imagepullsecret: imagepull
+  loglocation: /var/log/mapr/
+  corelocation: /var/log/mapr/cores
+  podinfolocation: /var/log/mapr/podinfo
+  security:
+    environmenttype: hcp
+    usesssd: true
+    externalconfigmap: mapr-external-cm
+    externalusersecret: mapr-user-secrets
+    externalserversecret: mapr-server-secrets
+    externalclientsecret: mapr-client-secrets
+  debugging:
+    loglevel: INFO
+    preservefailedpods: true
+    wipelogs: false
